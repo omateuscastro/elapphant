@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elapphant/app/stores/elephant_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -7,6 +10,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  ElephantStore _elephantStore;
+
+  @override
+  void initState() {
+    super.initState();
+    _elephantStore = GetIt.instance<ElephantStore>();
+  }
+
   profilePhoto(photoUrl) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -56,120 +67,79 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      profilePhoto(
-                          'https://elephant-api.herokuapp.com/pictures/missing.jpg'),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Center(
-                        child: Text(
-                          "Teste",
+            Observer(builder: (BuildContext context) {
+              return Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        profilePhoto(_elephantStore.elephant.image),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            "Teste",
+                            style: TextStyle(
+                              fontSize: 18,
+                              // fontFamily: Theme.of(context).textTheme.title.fontFamily,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            "Female",
+                            style: TextStyle(
+                              fontSize: 18,
+                              // fontFamily: Theme.of(context).textTheme.title.fontFamily,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "About",
+                          textAlign: TextAlign.left,
                           style: TextStyle(
                             fontSize: 18,
+
                             // fontFamily: Theme.of(context).textTheme.title.fontFamily,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Center(
-                        child: Text(
-                          "Female",
-                          style: TextStyle(
-                            fontSize: 18,
-                            // fontFamily: Theme.of(context).textTheme.title.fontFamily,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "About",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 18,
-
-                          // fontFamily: Theme.of(context).textTheme.title.fontFamily,
-                        ),
-                      ),
-                    ],
-                  ),
-                  ListTile(
-                    title: Text("Teste"),
-                    subtitle: Text("Teste"),
-                  ),
-                  ListTile(
-                    title: Text("Teste"),
-                    subtitle: Text("Teste"),
-                  ),
-                  new Row(
-                    children: <Widget>[
-                      rowCell('Teste', 'Teste'),
-                      rowCell('Teste', 'Teste'),
-                    ],
-                  ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   children: [
-                  //     ListTile(
-                  //       title: Text("Teste"),
-                  //       subtitle: Text("Teste"),
-                  //     ),
-                  //     ListTile(
-                  //       title: Text("Teste"),
-                  //       subtitle: Text("Teste"),
-                  //     ),
-                  //   ],
-                  // ),
-                  // ListTile(
-                  //   title: Text("Teste"),
-                  //   subtitle: Text("Teste"),
-                  // )
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   children: <Widget>[
-                  //     ListTile(
-                  //       title: Text(
-                  //         "Name",
-                  //         textAlign: TextAlign.left,
-                  //         style: TextStyle(
-                  //           fontSize: 18,
-
-                  //           // fontFamily: Theme.of(context).textTheme.title.fontFamily,
-                  //         ),
-                  //       ),
-                  //       subtitle: Text(
-                  //         "Rahul",
-                  //         textAlign: TextAlign.left,
-                  //         style: TextStyle(
-                  //           fontSize: 18,
-
-                  //           // fontFamily: Theme.of(context).textTheme.title.fontFamily,
-                  //         ),
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
-                ],
-              ),
-            )
+                      ],
+                    ),
+                    ListTile(
+                      title: Text("Teste"),
+                      subtitle: Text("Teste"),
+                    ),
+                    ListTile(
+                      title: Text("Teste"),
+                      subtitle: Text("Teste"),
+                    ),
+                    new Row(
+                      children: <Widget>[
+                        rowCell('Teste', 'Teste'),
+                        rowCell('Teste', 'Teste'),
+                      ],
+                    )
+                  ],
+                ),
+              );
+            })
           ],
         ),
       ),
