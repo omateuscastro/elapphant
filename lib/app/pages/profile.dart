@@ -32,29 +32,33 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget rowCell(String count, String type) => new Expanded(
-          child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Text(
-            '$count',
-            textAlign: TextAlign.left,
-            style: new TextStyle(color: Colors.black),
-          ),
-          new Text(type,
+          child: Padding(
+        padding: const EdgeInsets.only(left: 18.0),
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Text(
+              '$count',
               textAlign: TextAlign.left,
-              style: new TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.normal))
-        ],
+              style: new TextStyle(color: Colors.black, fontSize: 16),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5.0),
+              child: new Text(type,
+                  textAlign: TextAlign.left,
+                  style: new TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w300)),
+            )
+          ],
+        ),
       ));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(
-          'Profile',
+          'Perfil',
           style: TextStyle(color: Colors.black, fontSize: 54),
         ),
         backgroundColor: Colors.white,
@@ -69,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Observer(builder: (BuildContext context) {
               return Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(8.0),
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -83,11 +87,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                          child: Text(
-                            "Teste",
-                            style: TextStyle(
-                              fontSize: 18,
-                              // fontFamily: Theme.of(context).textTheme.title.fontFamily,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              _elephantStore.elephant.name,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -97,45 +102,57 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                          child: Text(
-                            "Female",
-                            style: TextStyle(
-                              fontSize: 18,
-                              // fontFamily: Theme.of(context).textTheme.title.fontFamily,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text(
+                              "Female",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    Divider(),
+                    Divider(
+                      color: Colors.pink,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          "About",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 18,
-
-                            // fontFamily: Theme.of(context).textTheme.title.fontFamily,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Text(
+                            "About",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: _elephantStore.elephant.sex == 'Female'
+                                    ? Colors.pink
+                                    : Colors.blue),
                           ),
                         ),
                       ],
                     ),
                     ListTile(
-                      title: Text("Teste"),
-                      subtitle: Text("Teste"),
+                      title: Text("Name"),
+                      subtitle: Text(_elephantStore.elephant.name),
                     ),
                     ListTile(
-                      title: Text("Teste"),
-                      subtitle: Text("Teste"),
+                      title: Text("Species"),
+                      subtitle: Text(_elephantStore.elephant.species),
                     ),
                     new Row(
                       children: <Widget>[
-                        rowCell('Teste', 'Teste'),
-                        rowCell('Teste', 'Teste'),
+                        rowCell('DOB', _elephantStore.elephant.dob),
+                        rowCell('DOD', _elephantStore.elephant.dod),
                       ],
-                    )
+                    ),
+                    ListTile(
+                      title: Text("Note"),
+                      subtitle: Text(_elephantStore.elephant.note),
+                    ),
                   ],
                 ),
               );
