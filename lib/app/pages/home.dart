@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Descubra",
+            "Discover",
             style: TextStyle(color: Colors.white, fontSize: 40),
           ),
           backgroundColor: Color.fromRGBO(253, 14, 66, 1),
