@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:elapphant/app/consts/consts.dart';
 import 'package:elapphant/app/models/elephant.dart';
