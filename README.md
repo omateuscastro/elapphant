@@ -5,13 +5,13 @@
 # ScreenShots
 ## Intro
 ![Alt text](/screenshots/intro.png?raw=true "Introdução")
-## Timeline
+## Buscando Elefante
 ![Alt text](/screenshots/buscando.png?raw=true "Buscando Elefante")
-## Novos Posts
+## Elefante Encontrado
 ![Alt text](/screenshots/encontrado.png?raw=true "Elefante Encontrado")
-## NPost
+## Nenhum Elefante Encontrado
 ![Alt text](/screenshots/nenhum.png?raw=true "Nenhum Elefante Encontrado")
-## Perfil
+## Perfil do Elefante
 ![Alt text](/screenshots/perfil.png?raw=true "Perfil do Elefante")
 
 # Instruções
