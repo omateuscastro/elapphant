@@ -38,12 +38,12 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(
             "Descubra",
-            style: TextStyle(color: Colors.white, fontSize: 54),
+            style: TextStyle(color: Colors.white, fontSize: 40),
           ),
           backgroundColor: Color.fromRGBO(253, 14, 66, 1),
           bottomOpacity: 0.0,
           elevation: 0.0,
-          toolbarHeight: 100,
+          toolbarHeight: 80,
         ),
         body: Stack(children: [
           Container(
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Card(
                                     margin: const EdgeInsets.only(
-                                        left: 30.0, right: 30.0, top: 400),
+                                        left: 30.0, right: 30.0, top: 420),
                                     elevation: 10,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:

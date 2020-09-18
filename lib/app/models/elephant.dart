@@ -4,8 +4,19 @@ class Elephant {
   String species;
   String sex;
   String image;
+  String dob;
+  String dod;
+  String note;
 
-  Elephant({this.id, this.name, this.species, this.sex, this.image});
+  Elephant(
+      {this.id,
+      this.name,
+      this.species,
+      this.sex,
+      this.image,
+      this.dob,
+      this.dod,
+      this.note});
 
   Elephant.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
@@ -13,6 +24,9 @@ class Elephant {
     species = json['species'];
     sex = json['sex'];
     image = json['image'];
+    dob = json['dob'];
+    dod = json['dod'];
+    note = json['note'];
   }
 
   Map<String, dynamic> toJson() {
@@ -22,6 +36,8 @@ class Elephant {
     data['species'] = this.species;
     data['sex'] = this.sex;
     data['image'] = this.image;
+    data['dob'] = this.dob;
+    data['dod'] = this.dod;
     return data;
   }
 }
