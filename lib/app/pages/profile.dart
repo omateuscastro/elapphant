@@ -70,53 +70,53 @@ class _ProfilePageState extends State<ProfilePage> {
       );
 
   Widget profileInfo() => Container(
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "About",
-                            textAlign: TextAlign.center,
-                            style: subHeaderTextStyle,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        profileDetailTitle("Name"),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        profileDetailText(_elephantStore.elephant.name),
-                        ...spacedDivider(),
-                        profileDetailTitle("Species"),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        profileDetailText(_elephantStore.elephant.species),
-                        ...spacedDivider(),
-                        Row(
-                          children: <Widget>[
-                            rowTile('DOB', _elephantStore.elephant.dob),
-                            rowTile('DOD', _elephantStore.elephant.dod),
-                          ],
-                        ),
-                        ...spacedDivider(),
-                        profileDetailTitle("Note"),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        profileDetailText(_elephantStore.elephant.note),
-                        ...spacedDivider(),
-                      ],
-                    ),
-                  ),
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "About",
+                  textAlign: TextAlign.center,
+                  style: subHeaderTextStyle,
                 ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              profileDetailTitle("Name"),
+              SizedBox(
+                height: 8,
+              ),
+              profileDetailText(_elephantStore.elephant.name),
+              ...spacedDivider(),
+              profileDetailTitle("Species"),
+              SizedBox(
+                height: 8,
+              ),
+              profileDetailText(_elephantStore.elephant.species),
+              ...spacedDivider(),
+              Row(
+                children: <Widget>[
+                  rowTile('DOB', _elephantStore.elephant.dob),
+                  rowTile('DOD', _elephantStore.elephant.dod),
+                ],
+              ),
+              ...spacedDivider(),
+              profileDetailTitle("Note"),
+              SizedBox(
+                height: 8,
+              ),
+              profileDetailText(_elephantStore.elephant.note),
+              ...spacedDivider(),
+            ],
+          ),
+        ),
+      );
 
   Widget profileImage(url) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -215,7 +215,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   height: 10,
                 ),
                 profileInfo(),
-                
               ],
             );
           })
