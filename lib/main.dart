@@ -1,4 +1,5 @@
 import 'package:elapphant/app/pages/home.dart';
+import 'package:elapphant/app/pages/intro.dart';
 import 'package:elapphant/app/stores/elephant_store.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -16,10 +17,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Elapphant',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: IntroPage(),
+      routes: {
+        "/home": (_) => new HomePage(),
+      },
     );
   }
 }
