@@ -1,5 +1,5 @@
 name: elapphant
-description: A new Flutter application.
+description: An app to discover elephants.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -29,11 +29,20 @@ dependencies:
   dio: ^3.0.10
   material_design_icons_flutter: 4.0.5555
   get_it: ^5.0.0
-
+  package_info: ^0.4.3
+  flutter_launcher_icons: ^0.8.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
+
+flutter_icons:
+  android: true 
+  ios: true
+  image_path_ios: "assets/icons/elapphant.png"
+  image_path_android: "assets/icons/elapphant.png"
+  adaptive_icon_background: "assets/icons/elapphant.png"
+  adaptive_icon_foreground: "assets/icons/elapphant.png"
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +65,7 @@ flutter:
   assets:
    - assets/images/elephant.png
    - assets/images/tantor.png
+   - assets/images/african_bush_elephant.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -68,17 +78,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-Regular.ttf
+        - asset: assets/fonts/Ubuntu-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
