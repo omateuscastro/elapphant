@@ -56,7 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 30),
                     child: Text(
-                      "Female",
+                      _elephantStore.elephant.sex,
                       style: TextStyle(
                         fontSize: 18,
                       ),
