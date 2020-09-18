@@ -18,147 +18,208 @@ class _ProfilePageState extends State<ProfilePage> {
     _elephantStore = GetIt.instance<ElephantStore>();
   }
 
-  profilePhoto(photoUrl) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        CircleAvatar(
-          radius: 100.0,
-          backgroundColor: Colors.grey,
-          backgroundImage: CachedNetworkImageProvider(photoUrl),
-        ),
-      ],
-    );
-  }
-
-  Widget rowCell(String count, String type) => new Expanded(
-          child: Padding(
-        padding: const EdgeInsets.only(left: 18.0),
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            new Text(
-              '$count',
-              textAlign: TextAlign.left,
-              style: new TextStyle(color: Colors.black, fontSize: 16),
+  Widget profileHeader() => Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5.0),
-              child: new Text(type,
-                  textAlign: TextAlign.left,
-                  style: new TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w300)),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                profileImage(_elephantStore.elephant.image),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: Text(
+                      _elephantStore.elephant.name,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Text(
+                      "Female",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
-      ));
+      );
+
+  Widget profileInfo() => Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "About",
+                            textAlign: TextAlign.center,
+                            style: subHeaderTextStyle,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        profileDetailTitle("Name"),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        profileDetailText(_elephantStore.elephant.name),
+                        ...spacedDivider(),
+                        profileDetailTitle("Species"),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        profileDetailText(_elephantStore.elephant.species),
+                        ...spacedDivider(),
+                        Row(
+                          children: <Widget>[
+                            rowTile('DOB', _elephantStore.elephant.dob),
+                            rowTile('DOD', _elephantStore.elephant.dod),
+                          ],
+                        ),
+                        ...spacedDivider(),
+                        profileDetailTitle("Note"),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        profileDetailText(_elephantStore.elephant.note),
+                        ...spacedDivider(),
+                      ],
+                    ),
+                  ),
+                ),
+
+  Widget profileImage(url) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          CircleAvatar(
+            radius: 80.0,
+            backgroundColor: Colors.grey,
+            backgroundImage: CachedNetworkImageProvider(url),
+          ),
+        ],
+      );
+
+  Widget rowTile(String title, String text) => Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              style: profileDetailTitleStyle,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              text,
+              style: profileDetailTextStyle,
+            ),
+          ],
+        ),
+      );
+
+  // use with the spread operator
+  List<Widget> spacedDivider() => [
+        SizedBox(
+          height: 8,
+        ),
+        Divider(),
+        SizedBox(
+          height: 8,
+        ),
+      ];
+
+  Widget profileDetailTitle(text) => Text(
+        text,
+        style: profileDetailTitleStyle,
+      );
+
+  Widget profileDetailText(text) => Text(
+        text,
+        style: profileDetailTextStyle,
+      );
+
+  final TextStyle profileDetailTitleStyle = TextStyle(
+    color: Colors.grey,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+
+  final TextStyle profileDetailTextStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+
+  final TextStyle subHeaderTextStyle = TextStyle(
+    color: Colors.red,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pink[50],
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left, size: 60, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Text(
           'Perfil',
-          style: TextStyle(color: Colors.black, fontSize: 54),
+          style: TextStyle(color: Colors.black, fontSize: 40),
         ),
         backgroundColor: Colors.white,
         bottomOpacity: 0.0,
         elevation: 0.0,
-        toolbarHeight: 100,
+        toolbarHeight: 80,
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Observer(builder: (BuildContext context) {
-              return Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        profilePhoto(_elephantStore.elephant.image),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              _elephantStore.elephant.name,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: Text(
-                              "Female",
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      color: Colors.pink,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: Text(
-                            "About",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: _elephantStore.elephant.sex == 'Female'
-                                    ? Colors.pink
-                                    : Colors.blue),
-                          ),
-                        ),
-                      ],
-                    ),
-                    ListTile(
-                      title: Text("Name"),
-                      subtitle: Text(_elephantStore.elephant.name),
-                    ),
-                    ListTile(
-                      title: Text("Species"),
-                      subtitle: Text(_elephantStore.elephant.species),
-                    ),
-                    new Row(
-                      children: <Widget>[
-                        rowCell('DOB', _elephantStore.elephant.dob),
-                        rowCell('DOD', _elephantStore.elephant.dod),
-                      ],
-                    ),
-                    ListTile(
-                      title: Text("Note"),
-                      subtitle: Text(_elephantStore.elephant.note),
-                    ),
-                  ],
+      body: ListView(
+        children: [
+          Observer(builder: (BuildContext context) {
+            return Column(
+              children: <Widget>[
+                profileHeader(),
+                SizedBox(
+                  height: 10,
                 ),
-              );
-            })
-          ],
-        ),
+                profileInfo(),
+                
+              ],
+            );
+          })
+        ],
       ),
     );
   }
