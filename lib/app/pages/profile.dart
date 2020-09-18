@@ -197,7 +197,7 @@ class _ProfilePageState extends State<ProfilePage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Perfil',
+          'Profile',
           style: TextStyle(color: Colors.black, fontSize: 40),
         ),
         backgroundColor: Colors.white,
